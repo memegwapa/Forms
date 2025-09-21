@@ -1,18 +1,25 @@
 <?php
-// Use environment variables for database credentials
-$servername = getenv('DB_HOST') ?: 'mysql'; // Default to 'mysql' if not set
-$username   = getenv('DB_USER') ?: 'root';
-$password   = getenv('DB_PASS') ?: '';
-$database   = getenv('DB_NAME') ?: 'data_connector';
+if (php_sapi_name() == "cli-server" || $_SERVER['SERVER_NAME'] == 'localhost') {
+    // Local XAMPP
+    $servername = "localhost";
+    $username   = "root";
+    $password   = ""; // usually empty in XAMPP
+    $database   = "data_connector";
+} else {
+    // Docker / Coolify
+    $servername = "mysql"; // MySQL service name in Coolify
+    $username   = "coolify_user";
+    $password   = "kweWtntbfJa5kF6uHmp1FpMPvlCEyg0Bi5t3YoSHfeFM8miVYxsP3rayr7tmmxmM";
+    $database   = "data_connector";
+}
 
-// Create a new MySQLi connection
+// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check the connection
+// Check connection
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
 
-// Set charset to UTF-8
 $conn->set_charset("utf8");
 ?>
