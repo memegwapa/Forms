@@ -6,11 +6,11 @@ if ($_SERVER['SERVER_NAME'] === 'localhost') {
     $password   = "";
     $database   = "data_connector";
 } else {
-    // Coolify setup
-    $servername = "mariadb";
-    $username   = "mariadb";
-    $password   = "your_password_from_coolify";
-    $database   = "user_db";
+    // Coolify / Docker setup (values come from Environment Variables in Coolify)
+    $servername = getenv('DB_HOST') ?: 'mariadb';
+    $username   = getenv('DB_USERNAME') ?: 'mariadb';
+    $password   = getenv('DB_PASSWORD') ?: 'password_from_coolify';
+    $database   = getenv('DB_DATABASE') ?: 'user_db';
 }
 
 $conn = new mysqli($servername, $username, $password, $database);
