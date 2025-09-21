@@ -12,14 +12,13 @@ COPY . /var/www/html/
 # Set working directory
 WORKDIR /var/www/html/
 
-# Fix permissions so Apache (www-data user) can access files
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+# Fix permissions
+RUN chmod -R 755 /var/www/html \
+    && chown -R www-data:www-data /var/www/html
 
-# Set data.php as default index file
+# Force Apache to load data.php by default
 RUN echo "<IfModule mod_dir.c>\n    DirectoryIndex data.php\n</IfModule>" \
-    > /etc/apache2/conf-available/directoryindex.conf \
-    && a2enconf directoryindex
+    > /etc/apache2/conf-enabled/directoryindex.conf
 
 # Expose Apache port
 EXPOSE 80
