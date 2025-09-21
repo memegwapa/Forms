@@ -16,5 +16,10 @@ WORKDIR /var/www/html/
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
+# Set data.php as default index file
+RUN echo "<IfModule mod_dir.c>\n    DirectoryIndex data.php\n</IfModule>" \
+    > /etc/apache2/conf-available/directoryindex.conf \
+    && a2enconf directoryindex
+
 # Expose Apache port
 EXPOSE 80
