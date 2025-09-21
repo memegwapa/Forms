@@ -5,15 +5,17 @@ if ($_SERVER['SERVER_NAME'] === 'localhost') {
     $username   = "root";
     $password   = "";
     $database   = "data_connector";
+    $port       = 3306;
 } else {
-    // Coolify setup (read from environment variables)
-    $servername = getenv('DB_HOST') ?: 'user_db';
+    // Coolify setup
+    $servername = getenv('DB_HOST') ?: 'mariadb';   // service name in Coolify
     $username   = getenv('DB_USERNAME') ?: 'mariadb';
     $password   = getenv('DB_PASSWORD') ?: 'your_password';
-    $database   = getenv('DB_DATABASE') ?: 'default';
+    $database   = getenv('DB_DATABASE') ?: 'user_db'; // your chosen DB name
+    $port       = getenv('DB_PORT') ?: 3306;
 }
 
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password, $database, $port);
 
 if ($conn->connect_error) {
     die("❌ Database connection failed: " . $conn->connect_error);
