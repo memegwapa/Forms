@@ -1,0 +1,235 @@
+:root {
+    --primary-color: #007bff;
+    --background-color:rgb(255, 255, 255);
+    --border-color: #dee2e6;
+    --light-gray: #F5F5DC;
+    --hover-background: #f0f0f0; /* Correctly defined as a variable */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --padding-sm: 8px 16px;
+    --padding-md: 12px 20px;
+    --border-radius: 6px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    
+}
+
+.sticky-header {
+    position: sticky;
+    background-color: white;
+    padding: var(--padding-md);
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+}
+
+.sticky-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: var(--padding-sm);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    text-decoration: none; 
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+}
+
+.btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Improved Delete Button Styles */
+.btn-danger,
+.btn-delete { 
+
+    background-color: #dc3545; 
+    color: white; /* Ensure text is white */
+    border: none;
+    padding: var(--padding-sm); /* Use your padding variable */
+    border-radius: var(--border-radius); /* Use your border radius variable */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 2px rgba(220, 53, 69, 0.3); /* Slightly darker shadow */
+
+}
+
+.btn-danger:hover,
+.btn-delete:hover {
+
+    background-color: #c82333; /* Darker red on hover */
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.5); /* Stronger hover shadow */
+}
+
+.btn-danger:focus,
+.btn-delete:focus {
+
+    outline: none;
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.7); /* Red focus shadow */
+}
+
+.btn-danger:disabled,
+.btn-delete:disabled {
+
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+    .container {
+
+        margin: 20px auto;
+        padding: var(--padding-md);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .table {
+       
+        border-collapse: collapse;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--box-shadow);
+    }
+
+    .table th,
+    .table td {
+
+        padding: 12px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+        line-height: 1.5;
+    }
+
+    .table th {
+        background-color: var(--light-gray);
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f8f8f8;
+    }
+
+    .table tbody tr:hover {
+        background-color: var(--hover-background);
+        transition: background-color 0.3s ease;
+    }
+
+    .sticky-action {
+        position: sticky;
+        right: 0;
+        background-color: white;
+        z-index: 1;
+        border-left: 1px solid var(--border-color);
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .sticky-th.id,
+    .sticky-th.last-name,
+    .sticky-th.first-name {
+        position: sticky;
+        left: 0; /* Changed to left: 0 */
+        background-color: white;
+        z-index: 2; /* Increased z-index */
+        border-right: 1px solid var(--border-color); /* Changed to border-right */
+        text-align: center;
+        white-space: nowrap;
+        transition: background-color 0.3s ease; /* Added transition */
+    }
+
+    .sticky-th:hover,
+    .sticky-th.last-name:hover,
+    .sticky-th.first-name:hover {
+        background-color: var(--hover-background); /* Corrected hover background */
+    }
+
+    .sticky-th.last-name {
+        left: 30px;
+    }
+
+    .sticky-th.first-name {
+        left: 130px;
+        border-right: 1px solid var(--border-color);
+    }
+   
+    /* Custom Alert Box */
+    .custom-alert {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .custom-alert-content {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        text-align: center;
+        width: 350px; /* SAME SIZE AS UPDATE ALERT */
+        position: relative;
+    }
+
+    /* Buttons */
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* Space between buttons */
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Delete Button */
+    .delete-btn {
+        background: red;
+        color: white;
+    }
+    .delete-btn:hover {
+        background: darkred;
+    }
+
+    /* Cancel Button */
+    .cancel-btn {
+        background: gray;
+        color: white;
+    }
+
+    .cancel-btn:hover {
+        background: darkgray;
+    }
