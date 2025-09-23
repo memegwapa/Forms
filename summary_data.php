@@ -292,7 +292,7 @@
 <body>
     <div class="sticky-header">
         <h1>Summary</h1>
-        <a class="btn btn-primary" href="data.php" role="button">New data</a>
+        <a class="btn btn-primary" href="index.php" role="button">New data</a>
     </div>
 
     <div class="container">
