@@ -4,7 +4,7 @@ $servername = getenv('DB_HOST') ?: 'localhost';   // fallback to localhost
 $username   = getenv('DB_USER') ?: 'root';
 $password   = getenv('DB_PASS') ?: '';
 $database   = getenv('DB_NAME') ?: 'data_connector';
-$port       = getenv('DB_PORT') ?: 3306;    
+$port       = getenv('DB_PORT') ?: 5432;    
 
 // Create MySQLi connection
 $conn = new mysqli($servername, $username, $password, $database);
